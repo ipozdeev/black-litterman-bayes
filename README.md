@@ -14,8 +14,14 @@ juliaup add 1.10
 
 Change the Julia executable in the Workspace settings of VS Code to `julia +1.10`. Run the notebook in the editor, making sure the kernel is shown as 'Julia 1.10 channel'.
 
-## jupyter
-TBD
-
 ## docker
-TBD
+To build the image:
+```
+docker build -t blb .
+```
+To run the notebook:
+```
+docker run --rm -p 8888:8888 -v $(pwd):/home/jovyan/work blb \
+    start-notebook.py --notebook-dir=work
+```
+and select `walkthrough.ipynb`.
